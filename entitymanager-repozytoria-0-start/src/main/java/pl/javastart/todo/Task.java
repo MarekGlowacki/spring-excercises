@@ -2,7 +2,7 @@ package pl.javastart.todo;
 
 import java.time.LocalDateTime;
 
-class Task {
+public class Task {
     private Long id;
     private String title;
     private String description;
