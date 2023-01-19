@@ -57,7 +57,7 @@ class NumbersGeneratorController {
     @ResponseBody
     String getOddNumbers(@RequestParam(required = false) Integer from,
                          @RequestParam(required = false) Integer to) {
-        if (incorrectParams(from, to)) {
+        if (from > to) {
             return "Dolne ograniczenie musi być mniejsze lub równe górnemu ograniczeniu.";
         } else if (from == null && to != null) {
             from = to - 100;
@@ -69,9 +69,5 @@ class NumbersGeneratorController {
         }
         List<Integer> evenNumbersResult = numberService.getOddNumbersFromRange(from, to);
         return String.format("Nieparzyste liczby z przedziału [%d; %d]: ", from, to) + evenNumbersResult;
-    }
-
-    private boolean incorrectParams(Integer from, Integer to) {
-        return from != null && to != null && from > to;
     }
 }
